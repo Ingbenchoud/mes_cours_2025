@@ -1,0 +1,123 @@
+          1-Topologie du reseau(Faire le cablage du reseau)
+
+          2-Configuration des PC
+          
+
+                       Router1
+            3-Initialisation du Routeur 1
+             Enable pour passer en mode pour privilegie
+             Write erase 
+             Reload
+             Redemarrer un routeur
+             Rolad
+             4-Configuration de base pour chaque routeur
+             a) Desactivez La recherche DNS
+             en mode terminal
+             no ip domain-lookup
+             b)Configurez le nom du peripherique conformement a la topologie 
+             Hostname R1
+             c)Attribuez cisco comme mots de passe console et vty
+             enable
+             configure terminal
+             line console 0
+             password cisco
+              exit
+             line vty 0 
+             exit
+             d)Attribuz class comme password du mode d'execution privilegie
+             enable
+             configure terminal
+             enable secret class
+             exit
+      e)Configurez logging synchronous pour empêcher les messages de console d’interrompre la commande 
+     enable
+     configure terminal
+     line console 0
+    logging synchronous
+  
+    f)Configurez l'adresse ip idiquee dans la table d'adressage sauf les adresses de bouclage
+        En mode privilegie
+         Enable
+         configure terminal
+         inteface GigabitEthernet0/0
+         ip address ............. 255.255.255.....
+         no shut
+          interface S0/0/0(DCE)  
+          ip address ............  255.255.255.....
+          no shut
+          interface S0/0/1 
+          ip address ...........   255.255.255.....
+         G) Copiez la configuration en tant configuration de demarrage
+           En mode priviligie
+        copy running-config startup-config
+        j'utilise les methodes pour configurer les deux autres routeurs
+    
+                             PARTIE 2
+        a)Configurerz EIGRP en indiquant la commande utilizer
+        R1(config)# router eigrp 1 
+R1(config-router)# network 192.168.1.0 
+R1(config-router)# network 192.168.12.0 0.0.0.3 
+R1(config-router)# network 192.168.13.0 0.0.0.3 
+R1(config-router)# network 192.168.11.0 0.0.0.3 
+R1(config-router)# network 192.168.11.4 0.0.0.3 
+R1(config-router)# network 192.168.11.8 0.0.0.3 
+R1(config-router)# network 192.168.11.12 0.0.0.3 
+R1(config-router)# passive-interface g0/0 
+R1(config)# 
+      b)b. Pour l’interface LAN sur R1, désactivez la transmission des paquets Hello EIGRP. Indiquez la commande 
+utilisée dans l’espace ci-dessous. 
+       Enable 
+       configure terminal
+       interface GigabitEthernet0/1
+        ip hello-interval eigrp 1 0
+        exit 
+        write memory
+      c)Sur R1, configurez la bande passante pour S0/0/0 sur 1 024 Kb/s et pour S0/0/1 sur 64 Kb/s. Indiquez les 
+commandes utilisées dans l’espace ci-dessous. Remarque : la commande bandwidth affecte 
+uniquement le calcul des métriques EIGRP, pas la bande passante réelle du lien série.
+         int s0/0/0 
+R1(config-if)# bandwidth 1024 
+R1(config-if)# int s0/0/1 
+R1(config-if)# bandwidth 64
+
+d)Sur R2, configurez le routage EIGRP avec un ID de système autonome de 1 pour tous les réseaux, 
+désactivez la transmission des paquets Hello EIGRP pour l’interface LAN et configurez la bande 
+passante pour S0/0/0 sur 1 024 Kb/s.
+R2(config)# router eigrp 1 
+R2(config-router)# network 192.168.2.0 
+R2(config-router)# network 192.168.12.0 0.0.0.3 
+R2(config-router)# network 192.168.23.0 0.0.0.3 
+R2(config-router)# passive-interface g0/0 
+R2(config)# int s0/0/0 
+R2(config-if)# bandwidth 1024
+
+e) Sur R3, configurez le routage EIGRP avec un ID de système autonome de 1 pour tous les réseaux, 
+désactivez la transmission des paquets Hello EIGRP pour l’interface LAN et configurez la bande 
+passante pour S0/0/0 sur 64 Kb/s.
+R3(config)# router eigrp 1 
+R3(config-router)# network 192.168.3.0 
+R3(config-router)# network 192.168.13.0 0.0.0.3 
+R3(config-router)# network 192.168.23.0 0.0.0.3 
+R3(config-router)# network 192.168.33.0 0.0.0.3 
+R3(config-router)# network 192.168.33.4 0.0.0.3 
+R3(config-router)# network 192.168.33.8 0.0.0.3 
+R3(config-router)# network 192.168.33.12 0.0.0.3 
+R3(config-router)# passive-interface g0/0 
+R3(config)# int s0/0/0 
+R3(config-if)# bandwidth 64
+
+       Etape 2
+       1-Tester la connectivite
+       Tous les PC doivent pouvoir s’envoyer des requêtes ping entre eux. Vérifiez et dépannez, le cas échéant. 
+       Etape 3
+       Ajouter des interfaces de bouclage
+       enable 
+       configure terminal
+       interface loopback 1
+       no shut
+       ip address .......  .......
+       exit
+
+
+        
+       

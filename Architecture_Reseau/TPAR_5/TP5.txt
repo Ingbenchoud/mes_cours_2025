@@ -1,0 +1,91 @@
+
+
+
+
+                                           TP5
+                                enable
+                                HQ#show clock
+                                HQ#clock set 12h:37 27 Avril 2025 
+                                HQ#show clock
+                                HQ#configure terminal
+                                HQ(config)#hostname HQ
+                                HQ(config)#enable secret Good Monning
+                                HQ(config)#line console 0
+                                HQ(config-line)#password bonjour
+                                HQ(config-line)#login
+                                HQ(config-line)#exit
+                                HQ(config)#line vty 0 5
+                                HQ(config-line)#password bonjour
+                                HQ(config-line)#login
+                                HQ(config-line)#end
+                                HQ#show running-config
+                                HQ#configure terminal
+                                HQ(config)# service password-encryption
+                                HQ(config)#end
+                                HQ#show running-config
+                                HQ#configure terminal
+                                HQ(config)#banner motd #accès non autorisé interdit#
+                                HQ(config)#end
+                                HQ#copy running-config startup-config
+                                 
+                                         BRANCH1
+                                enable
+                                BRANCH1#show clock
+                                BRANCH1#clock set 12h:37 27 Avril 2025 
+                                BRANCH1#show clock
+                                BRANCH1# conf t
+                                BRANCH1# no ip domain-lookup
+                                BRANCH1#configure terminal
+                                BRANCH1(config)#hostname BRANCH1
+                                BRANCH1(config)#enable secret Good Monning
+                                BRANCH1(config)#line console 0
+                                BRANCH1(config)#logging synchronous
+                                BRANCH1(config-line)#password bonjour
+                                BRANCH1(config-line)#login
+                                BRANCH1(config-line)#exit
+                                BRANCH1(config)#line vty 15
+                                BRANCH1(config-line)#password bonjour
+                                BRANCH1(config-line)#login
+                                BRANCH1(config-line)#end
+                                BRANCH1#show running-config
+                                BRANCH1#configure terminal
+                                BRANCH1(config)# service password-encryption
+                                BRANCH1(config)#end
+                                BRANCH1#show running-config
+                                BRANCH1#configure terminal
+                                BRANCH1(config)#banner motd #accès non autorisé interdit#
+                                BRANCH1(config)#end
+                                BRANCH1#copy running-config startup-config
+                                        
+                                                          
+                                         BRANCH2
+                                enable
+                                BRANCH2#show clock
+                                BRANCH2#clock set 1h:20 27 Avril 2025 
+                                BRANCH2#show clock
+                                BRANCH2# conf t
+                                BRANCH2# no ip domain-lookup
+                                BRANCH2#configure terminal
+                                BRANCH2#(config)#hostname BRANCH2
+                                BRANCH2#(config)#enable secret Good Monning
+                                BRANCH2#(config)#line console 0
+                                BRANCH2#(config)#logging synchronous
+                                BRANCH1#(config-line)#password bonjour
+                                BRANCH2#(config-line)#login
+                                BRANCH2#(config-line)#exit
+                                BRANCH2#(config)#line vty 15
+                                BRANCH2#(config-line)#password bonjour
+                                BRANCH2#(config-line)#login
+                                BRANCH2#(config-line)#end
+                                BRANCH2#show running-config
+                                BRANCH2#configure terminal
+                                BRANCH2#(config)# service password-encryption
+                                BRANCH1#(config)#end
+                                BRANCH2#show running-config
+                                BRANCH2#configure terminal
+                                BRANCH2#(config)#banner motd #accès non autorisé interdit#
+                                BRANCH2#(config)#end
+                                BRANCH2#copy running-config startup-config
+                                
+                                 
+                                  in

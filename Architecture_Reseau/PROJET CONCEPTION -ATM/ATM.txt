@@ -1,0 +1,35 @@
+                                
+                          en
+                          conf t
+                          no ip domain-lookup
+                          hostname Router_TAM
+                          Attribution de mode de passe
+                            enable
+                           configure terminal
+                           line console 0
+                           password cisco
+                           exit
+                           line vty 0 
+                           exit
+                           Attribution class comme password du mode d'execution privilegie
+                           enable
+                           configure terminal
+                           enable secret class
+                           exit
+
+                           synchronisation logginng
+                           enable
+                           configure terminal
+                           line console 0
+                           logging synchronous
+                          
+                              en
+                              conf t
+                              interface atm0/0 Gig0/0 
+                               ip address 192.168.1.1 255.255.255.252 ou/30
+                               no shut
+                               
+                               int atm0/1 Gig0/1 
+                                ip address 192.168.1.2 255.255.255.252
+                                no shut
+                                

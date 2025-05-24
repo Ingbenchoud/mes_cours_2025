@@ -1,0 +1,85 @@
+              Partie 1 Creation du reseau et configuration des parametres de base
+                      
+              Étape 3 : Configurez les paramètres de base pour chaque routeur. 
+          a. Désactivez la recherche DNS. 
+           en mode terminal
+             no ip domain-lookup
+          b. Configurez le nom du périphérique conformément à la topologie. 
+            Hostname R1
+         c. Attribuez class comme mot de passe du mode d’exécution privilégié. 
+            enable
+             configure terminal
+             enable secret class
+             exit
+        d. Attribuez cisco comme mots de passe de console et vty. 
+             enable
+             configure terminal
+             line console 0
+             password cisco
+             login
+              exit
+             line vty 0 4
+             password cisco
+             login
+            exit
+        e. Configurez logging synchronous pour la ligne de console. 
+         enable
+       configure terminal
+       line console 0
+       logging synchronous
+       
+      en
+      conf t
+     service password-encryption permet de chiffrer les mots de passe
+  
+       f.Configurez une bannière MOTD pour avertir les utilisateurs que tout accès non autorisé est interdit. 
+        enable
+        configure terminal
+        banner motd #Tout acces non autorise est interdit
+        #
+         end
+          
+
+       Travaux pratiques : configuration du routage OSPFv2 à zones multiples 
+      g  . Configurez les adresses IP indiquées dans la table d’adressage pour toutes les interfaces. Les interfaces 
+     DCE doivent être configurées avec une fréquence d’horloge de 128 000. La bande passante doit être de 
+    128 Kb/s sur toutes les interfaces série. 
+
+          interface......... ................
+           clock rate 128 000
+          bandwith 128
+     h. Copiez la configuration en cours en tant que configuration de démarrage.
+
+     Copy-running startup-config
+
+
+     Les memes methodes pour les deux autre routeurs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
