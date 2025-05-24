@@ -1,0 +1,36 @@
+rm -r nom du du fichier permet de supprimer un fichier .
+r
+ls ou dir pour verifier si un fichier a ete bien cree
+cd suivi du dnom du dossier permet de posisioner ds un repertoire
+git init this command creates an empty git repository-basically.
+control + x ouvre une boite de dialogue pour vous demander si vous voulez enregistrer ou non le fichier
+clear pour nettoyer l'ecran
+
+mv ancien nom   nouveau nom pour renommer un fichier
+touch + nom permet de creer un fichier a l'interieur d'un dossier
+ cd -- permet de sortir dans un repertoire
+git commit -m "Premiere modification" -a
+rm -rf nom du fichier permet aussi de le supprimer
+
+git add nom du fichier permet d'ajouter un fichier ds la zone
+git log vous donne un rapport detaille sur le nombre de modification sur un fichier
+ls -a pour le contenu du fichier cache
+git init pour initialiser un fichier
+
+touch + nom fichier.txt permet de creer un fichier
+
+nano + nom du fihier permet d'editer des informations ds un fichier
+
+CTRL + X en appuiyant sur y permet d'enregistrer l'information et puis appuyer sur enter pour sortir.
+git status permet de voir le status du fichier ou de voir s'il est ds la zone extension
+
+Pour ajouter ds la zone d'extension 
+
+Git add + nom fichier
+
+Git commit -m "Message" -a permet d'ajouter un fichier ds la zone d'historisation
+
+Git log permet de voir l'hostoricite des modifications ds 1 fichier.
+
+
+
